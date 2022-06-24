@@ -7,7 +7,7 @@ const { Auth, isAuthenticated} = require('./auth.controller')
 const port = 3000
 
 mongoose.connect('mongodb+srv://lopez0412:JLopez0412@cluster0.pfc2s.mongodb.net/jadeTest?retryWrites=true&w=majority')
-
+//mongoose.connect('mongodb://localhost:27017/jadeTest?retryWrites=true&w=majority')
 app.use(express.json())
 // citas
 app.get('/citas',isAuthenticated, Cita.list)
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 app.get('*', (req, res) => {
 	res.status(404).send('Esta página no existe :(')
 })
-
-app.listen(port, () => {
+const PORT = 3000
+app.listen(process.env.PORT || PORT, () => {
 	console.log('Arrancando la aplicación!')
 })
