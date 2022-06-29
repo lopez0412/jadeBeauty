@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const app = express()
 const Cita = require('./citas/citas.controller')
 const Servicio = require('./servicios/servicios.controller')
@@ -9,6 +10,7 @@ const port = 3000
 mongoose.connect('mongodb+srv://lopez0412:JLopez0412@cluster0.pfc2s.mongodb.net/jadeTest?retryWrites=true&w=majority')
 //mongoose.connect('mongodb://localhost:27017/jadeTest?retryWrites=true&w=majority')
 app.use(express.json())
+app.use(cors())
 // citas
 app.get('/citas',isAuthenticated, Cita.list)
 app.get('/citas/:id', isAuthenticated, Cita.getOne)
