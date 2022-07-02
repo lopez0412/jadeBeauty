@@ -2,7 +2,7 @@ const Citas = require('./citas.model')
 
 const Cita = {
 	list: async (req, res) => {
-		const { fecha } = req.body
+		const { fecha } = req.params
 		const cita = await Citas.find({ 'fecha':  fecha}).populate('id_servicio','name')
 		res.status(200).send(cita)
 	},

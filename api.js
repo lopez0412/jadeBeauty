@@ -12,7 +12,7 @@ mongoose.connect('mongodb+srv://lopez0412:JLopez0412@cluster0.pfc2s.mongodb.net/
 app.use(express.json())
 app.use(cors())
 // citas
-app.get('/citas',isAuthenticated, Cita.list)
+app.get('/citas/:fecha',isAuthenticated, Cita.list)
 app.get('/citas/:id', isAuthenticated, Cita.getOne)
 app.post('/citas', isAuthenticated, Cita.create)
 app.put('/citas/:id', isAuthenticated, Cita.update)
